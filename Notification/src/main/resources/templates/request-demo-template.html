@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+  <head>
+      <title th:remove="all">Demo Request</title>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      
+  </head>
+
+  <body>
+   <div align="center">
+     
+       <table style="background-color:#f8f8f8;">
+           <tbody>
+             <tr>
+                <td style="padding-top:30px" valign="top" align="center">
+                  <table style="border:1px #f2f2f2 solid">
+                     <tbody>
+
+                          <tr>
+                            <td style="background-clip:#ffffff;border:1px solid #f2f2f2" valign="top">
+                               <table>
+                                  <tbody>
+                                    <tr>
+                                       <td valign="middle" align="left">
+                                        <a href="https://nukart.in">
+                                         <img style="padding:25px 20px 20px 15px" th:src="${image}" onclick="" width="200" height="50"/>
+                                        </a>
+                                       </td>  
+                                    </tr>
+                                  </tbody>
+                                </table>
+                            </td>
+                          </tr>
+
+                           <tr>
+                               <td style="vertical-align:top;padding:25px 8px 15px 8px" bgcolor="#FFFFFF">
+                                 <table style="border-collapse:collapse;float:left"> 
+                                   <tbody>
+                                     <tr>
+                                       <td style="padding:0 10px 0 10px" valign="middle">
+                                         <div th:if="${isConsumer}">
+                                           <h2 style="color:#b18767;font-weight:400;line-height:30px;font-size:26px;text-align:left">Hi <b th:text="${consumer.getFirstName()}"></b>,</h2>
+                                           <div style="color:#3e3e3e;font-weight:400;line-height:24px;font-size:14px;text-align:left" th:if="${state}">
+                                           		<div th:if="${!demo}">
+                                           			Demo request for the product <span><b th:text="${product.getName()}"></b></span> has been sent to <span><b th:text="${retailer.getName()}"></b></span> concerned person will get back to you very shortly
+	                                           		<p>DemoTime: <b th:text="${order.getDemoRequestDate()}"></b></p>
+	                                           		<p>Address: <b th:text="${order.getDemoRequestAddress()}"></b></p>
+                                           		</div>
+                                           		<div th:if="${demo}">
+                                           			Demo request for the product <span><b th:text="${product.getName()}"></b></span> has been sent to <span><b th:text="${retailer.getName()}"></b></span>
+	                                           		<p>DemoTime: <b th:text="${order.getDemoRequestDate()}"></b></p>
+	                                           		<p>Store Address: <b th:text="${retailer.getAddress()}"></b></p>
+                                           		</div>
+                                           </div>
+                                           <div style="color:#3e3e3e;font-weight:400;line-height:24px;font-size:14px;text-align:left" th:if="${!state}">
+                                           		Demo request for the product <span><b th:text="${product.getName()}"></b></span> has been cancelled.                                           		
+                                           </div>
+                                              <!-- <div style="color:#3e3e3e;font-weight:400;line-height:24px;font-size:14px;text-align:left">
+                                                  <p> Retailer Name: <b th:text="${retailer.getName()}"></b></p><p> Product:<b th:text="${product.getName()}"></b></p> <p>DemoTime: <b th:text="${order.getDemoRequestDate()}"></b></p>
+                                               </div>  --> 
+                                          </div>
+
+                                          <div th:if="${!isConsumer}">
+                                              <h2 style="color:#b18767;font-weight:400;line-height:30px;font-size:26px;text-align:left"> Hi,</h2>
+                                              <div style="color:#3e3e3e;font-weight:400;line-height:24px;font-size:14px;text-align:left" th:if="${state}">
+                                              	<div th:if="${!demo}">
+	                                              	<span><b th:text="${consumer.getFirstName()}"></b></span> has requested for demo on <span><b th:text="${product.getName()}"></b></span> at <b th:text="${order.getDemoRequestDate()}">.</b>
+	                                              	<p><b>Contact Details:</b></p>
+	                                              	<p>Address: <b th:text="${order.getDemoRequestAddress()}"></b></p>
+	                                              	<p>Mobile Number: <b th:text="${consumer.getKey().getSecondary()}"></b></p>
+                                              	</div>
+                                              	   <div th:if="${demo}">
+	                                              	<span><b th:text="${consumer.getFirstName()}"></b></span> has requested demo at your store for <span><b th:text="${product.getName()}"></b></span> on <b th:text="${order.getDemoRequestDate()}">.</b>
+	                                              	<p><b>Contact Details:</b></p>
+	                                              	<p>Mobile Number: <b th:text="${consumer.getKey().getSecondary()}"></b></p>
+                                              	</div>                                          	
+                                              </div>
+                                               <div style="color:#3e3e3e;font-weight:400;line-height:24px;font-size:14px;text-align:left" th:if="${!state}">
+                                              	<span><b th:text="${consumer.getFirstName()}"></b></span> has cancelled demo request for the product <span><b th:text="${product.getName()}"></b>.</span>                                          	
+                                              </div>
+                                                 <!-- <div style="color:#3e3e3e;font-weight:400;line-height:24px;font-size:14px;text-align:left">
+                                                      <p>Consumer:<b th:text="${consumer.getFirstName()}"> </b></p> <p>Address:<b th:text="${consumer.getHomeAddress()}"></b></p><p>  Product: <b th:text="${product.getName()}"></b></p> <p>DemoTime:<b th:text="${order.getDemoRequestDate()}"></b></p>
+                                                </div>  -->   
+                                          </div>       
+
+                                       </td>
+                                     </tr>
+                                   </tbody>
+                                </table>
+                              </td>
+                             </tr> 
+
+                               <tr>
+                                <td style="border-width:1px;border-style:solid;border-color:#f8f8f8;border-top-color:#f2f2f2;border-bottom-color:#f2f2f2" bgcolor="#F8F8F8">
+                                  <table style="border-collapse:collapse;float:left">
+                                    <tbody>
+                                      <tr>
+                                        <td style="padding:0 10px 0 10px" valign="middle"></td>
+                                      </tr>
+                                      <tr style="height:20px"></tr>
+                                    </tbody>
+                                  </table>
+                                </td>
+                             </tr>
+
+                             <tr style="background-color:#ffffff">
+                                <td style="padding:5px 15px 15px 15px" valign="top">
+                                   <table >
+                                      <tbody>
+                                        <tr>
+                                           <td style="font-size:14px" valign="middle" align="left">
+                                               <span style="color:#3e3e3e" th:text="${message}"></span>
+                                           </td>
+                                        </tr>
+                                      </tbody>
+                                   </table>
+                                </td>
+                              </tr>
+
+                              <tr style="border-width:1px;border-style:solid;border-color:#f8f8f8">
+                                 <td style="padding:2px 15px 15px 15px" valign="top">
+                                    <table>
+                                      <tbody>
+                                        <tr>
+                                           <td valign="middle" align="left">
+                                              <span style="font-size:12px;color:#3e3e3e">
+                                                  Copyright © 2017,
+                                                  <span class="il">nuKart</span>
+                                                   Digital Solutions Private Limited. All Rights Reserved
+                                              </span>
+                                            </td>
+                                        </tr>
+                                       </tbody>
+                                    </table>
+                                </td>
+                              </tr> 
+                              
+                           </tbody>
+                         </table>
+                       </td>
+                     </tr>
+                  </tbody> 
+                </table>      
+     
+            </div>
+          </body>
+        </html>  
+
+                          

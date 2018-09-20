@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+      <title th:remove="all">Template for HTML email (simple)</title>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <style>
+           table {
+               width:100%;
+           }
+           table, th, td {
+               border: 1px solid black;
+               border-collapse: collapse;
+           }
+           th, td {
+               padding: 5px;
+               text-align: left;
+           }
+           table#t01 tr:nth-child(even) {
+               background-color: #eee;
+           }
+           table#t01 tr:nth-child(odd) {
+              background-color:#fff;
+           }
+           table#t01 th {
+               background-color: black;
+               color: white;
+           }
+           	hr {
+			height: 1px;
+			background-color: black;
+			margin-top: 10px;
+			}
+       </style>
+  </head>
+  <body>
+   <div>
+       <a href="https://nukart.in/"><img th:src="${image}" height="30px"/></a>
+      </div> 
+       <div th:each="key : ${order}" th:object="${key}" style="margin-top: 10px;">
+          <div th:each="ofkey : ${offer}" th:object="${ofkey}">
+          		  <div th:switch="${orderstatus}">
+          		  	 <div th:case="'Cancelled'">
+                    		<p style="font-size:18px;">We're sorry to inform you that order for <span th:text="${offer.getProduct().getName()}"></span> has been cancelled.</p>
+                  	 </div>
+          		  </div>
+                 <table>
+                 <tr style="background-color: black;color: white;"><th colspan="2">Product Details</th></tr>
+                 <tr><td>Name</td><td th:text="${ofkey.getProduct().getName()}"></td></tr>
+                 <tr><td>Category</td><td th:text="${ofkey.getProduct().getCategory()}"></td></tr>
+                 <tr><td>Brand</td><td th:text="${ofkey.getProduct().getBrand()}"></td></tr>
+                 <tr><td>Color</td><td th:text="${ofkey.getProduct().getColor()}"></td></tr>
+                 <tr><td>Price</td><td th:text="${ofkey.getCampaign().getSalePrice()}"></td></tr>
+                 <tr><td>Quantity</td><td th:text="${key.getProductQuantity()}"></td></tr>
+               </table>
+       
+               <table th:each="cons : ${consumer}" th:object="${cons}" style="margin-top:20px;">
+                 <tr style="background-color: black;color: white;"><th colspan="2">Consumer Details</th></tr>
+                 <tr><td>Name</td><td th:text="${cons.getFirstName()}"></td></tr>
+                 <tr><td>Email Id</td><td th:text="${cons.getKey().getPrimary()}"></td></tr>
+                 <tr><td>Mobile No</td><td th:text="${cons.getKey().getSecondary()}"></td></tr>
+                 <!-- <tr><td>Shipping Address</td><td th:text="${key.getShippingAddress()}"></td></tr>-->
+               </table>
+               
+              <table th:if="${key.getStatus() == 'COD'}" style="margin-top:20px;">
+                 <tr style="background-color: black;color: white;"><th colspan="2">Payment Details</th></tr>
+                 <tr><td>Payment Mode</td><td>COD</td></tr>
+               </table>
+               
+               
+               <!-- <table th:each="vouch : ${voucher}" th:object="${vouch}" style="margin-top:20px;">
+               		<tr>
+               			<td>Voucher Code: <span><b th:text="${vouch.getCode()}"></b></span> </td>
+               			<td>Validity: <span><b th:text="${vouch.getValidity()}"></b></span> </td>
+               		</tr>
+               </table>-->
+               
+               <div>
+               		<p>Voucher Code: <span><b th:text="${voucher}"></b></span></p>
+               		<p>Voucher Valid Till: <span><b th:text="${validity}"></b></span></p>
+               </div>
+               
+          </div>
+      </div>      
+       <hr/>
+       <div style="padding:10px;">
+       		<span th:text="${message}"></span>
+       </div>
+       
+  </body>
+</html>

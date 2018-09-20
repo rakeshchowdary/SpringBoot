@@ -1,0 +1,30 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+   <head>
+       <title th:remove="all">Template for HTML email</title>
+       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+   </head>
+   <body>
+    Dear User
+    <br/>
+   
+      <p>
+        Congratulations on your purchase from nuKart! Please carry and show below Voucher to the Seller and
+        avail nuKart offer.<br/>
+        Voucher <b th:text="${voucherCode}"></b> <br/>for product <b th:text="${productName}"></b> <br/>generated on <b th:text="${Date}"></b>,
+         <b th:text="${campaignName}"></b> <br/>valid upto <b th:text="${validity}"></b>. <br/>You have redeemed <b th:text="${loyaltyPoints}"></b>
+         points on this voucher.
+         
+         Fulfilled By : <b th:text="${retailerName}"></b>
+         Store Address: <b th:text="${retailerAddress}"></b>
+                          <b th:text="${retailerContact}"></b>
+         
+         You have earned 1000 points with this Buy/Pickup and your balance loyalty points are <b th:text="${totalloyaltyPoints}"></b>
+     </p>
+                    <p>
+                        Regards, <br />
+                        &emsp; <em>The nuKart Team</em>
+                    </p>
+   </body>
+</html>

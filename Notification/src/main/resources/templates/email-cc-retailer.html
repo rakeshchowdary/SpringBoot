@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+  <head>
+      <title th:remove="all">Welcome Email</title>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      
+  </head>
+      
+  <body>
+   <div align="center">
+     
+       <table style="background-color:#f8f8f8;">
+           <tbody>
+             <tr>
+                <td style="padding-top:30px" valign="top" align="center">
+                  <table style="border:1px #f2f2f2 solid">
+                     <tbody>
+                          <tr>
+                            <td style="background-clip:#ffffff;border:1px solid #f2f2f2" valign="top">
+                               <table>
+                                  <tbody>
+                                    <tr>
+                                       <td valign="middle" align="left">
+                                        <a href="https://nukart.in">
+                                         <img style="padding:25px 20px 20px 15px" th:src="${image}" onclick="" width="200" height="50"/>
+                                        </a>
+                                       </td>  
+                                    </tr>
+                                  </tbody>
+                                </table>
+                            </td>
+                          </tr> 
+
+                            <tr>
+                               <td style="vertical-align:top;padding:0px 8px 0px 8px" bgcolor="#FFFFFF">
+                                 <table style="border-collapse:collapse;float:left"> 
+                                   <tbody>
+                                     <tr>
+                                       <td style="padding:0 10px 0 10px" valign="middle" th:object="${retailer}">
+                                         <h1 style="color:#b18767;font-weight:400;line-height:30px;font-size:26px;text-align:left">Dear <b th:text="${retailer.getContact_person()}"></b></h1>
+                                         <div style="color:#3e3e3e;font-weight:400;line-height:24px;font-size:14px;text-align:left">
+                                           <p>Welcome to <a href="https://nukart.in">NUKART</a>  and Congratulations on successful registration !</p>
+                                           <p>
+                                            Your Digital Store is up and available online now !!
+                                            You can start creating offers on products and increase your sales. Below is your login info.</p>
+
+                                            <p>
+                                            Retailer Name/ID: <span th:if="${retailer.getName() != null}"><b th:text="${retailer.getName()}"></b></span><b th:if="${retailer.getName() != null and retailer.getEmail() != null}">/</b><span th:if="${retailer.getEmail() != null}"><b style="text-decoration:none;" th:text="${retailer.getEmail()}"></b></span>
+                                            <br/>
+                                            Retailer Password: nukart</p>
+                                            <p>Please change the default password post your first login.</p>
+                                            <p>Reach out to Nukart Customer care for any issues, help on +91 80 33588383
+                                            <br/>
+                                            Happy Selling!!!</p>                                           
+                                        </div>
+                                        <br/>
+                                        	<div style="color:#3e3e3e;font-weight:400;line-height:24px;font-size:14px;text-align:left">
+	                                           <p>Regards,<br/>
+	                                           NUKART Team<br/>
+	                                           customercare@nukart.in</p>
+                                          	</div>
+                                       </td>
+                                     </tr>
+                                   </tbody>
+                                </table>
+                              </td>
+                            </tr> 
+
+                            <!-- <tr style="border:0px none" bgcolor="#FFFFFF">
+                               <td style="padding:15px 15px 15px 15px" valign="top">
+                                 <table style="float:left">
+                                   <tbody>
+                                     <tr>
+                                       <td valign="middle" align="left">
+                                          <a href="https://nukart.in" style="text-decoration:none;vertical-align:top;display:block" target="_blank" data-saferedirecturl="">
+                                            <span style="font-size:14px!important;line-height:54px;display:inline-block;color:#ffffff;border-radius:1px;text-align:center;padding:0 30px 0 30px;background-color:#2774d0">Shop Now</span>
+                                          </a>
+                                        </td>
+                                      </tr>
+                                   </tbody>
+                                 </table>
+                               </td>
+                            </tr> -->
+
+                            <tr>
+                                <td style="border-width:1px;border-style:solid;border-color:#f8f8f8;border-top-color:#f2f2f2;border-bottom-color:#f2f2f2" bgcolor="#F8F8F8">
+                                  <table style="border-collapse:collapse;float:left">
+                                    <tbody>
+                                      <tr>
+                                        <td style="padding:0 10px 0 10px" valign="middle"></td>
+                                      </tr>
+                                      <tr style="height:8px"></tr>
+                                    </tbody>
+                                  </table>
+                                </td>
+                             </tr>
+
+                             <tr style="background-color:#ffffff">
+                                <td style="padding:5px 15px 15px 15px" valign="top">
+                                   <table >
+                                      <tbody>
+                                        <tr>
+                                           <td style="font-size:14px" valign="middle" align="left">
+                                               <span style="color:#3e3e3e" th:text="${message}"></span>
+                                           </td>
+                                        </tr>
+                                      </tbody>
+                                   </table>
+                                </td>
+                              </tr>
+                              
+                              <tr>
+                              <td style="vertical-align:top;padding:10px 8px 10px 8px" bgcolor="#FFFFFF">
+                                <table style="border-collapse:collapse;float:left">
+                                  <tbody>
+                                    <tr>
+                                      <td style="padding:0 10px 0 10px" valign="middle">
+                                        <div style="color:#3e3e3e;font-weight:400;line-height:24px;font-size:14px;text-align:left">
+                                           <h3>About Nukart</h3>
+                                           <p>Nukart provides an easy way to bring local and offline stores online. <br/>
+                                           NUKART has innovated and established a digital platform which will enable stores to retain their traditional in-store shopping and logistics/shipping strengths while enabling them with all digital value play to perfect the future of retail even at hyper local level. This will also empower big and small local retailers to open online channel with all required IT enablement for digitalization coming in from Nukart.
+
+                                           </p>
+                                        </div>
+                                      </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                               </td>
+                            </tr>
+                            
+                             <tr>
+			                    <td style="border-width:1px;border-style:solid;border-color:#f8f8f8;border-top-color:#f2f2f2;border-bottom-color:#f2f2f2" bgcolor="#F8F8F8">
+			                     <table style="border-collapse:collapse;float:left">
+			                        <tbody>
+			                          <tr>
+			                             <td style="padding:0 10px 0 10px" valign="middle"></td>
+			                          </tr>
+			                          <tr style="height:10px"></tr>
+			                         </tbody>
+			                      </table>
+			                    </td>
+                 			</tr>   
+                 			
+                 			<tr style="background-color:#ffffff">
+                                <td style="padding:5px 15px 15px 15px" valign="top">
+                                   <table >
+                                      <tbody>
+                                        <tr>
+                                           <td style="font-size:14px" valign="middle" align="left">
+                                               <span style="color:#3e3e3e" th:text="${message}"></span>
+                                           </td>
+                                        </tr>
+                                      </tbody>
+                                   </table>
+                                </td>
+                              </tr>
+
+                              <tr style="border-width:1px;border-style:solid;border-color:#f8f8f8">
+                                 <td style="padding:2px 15px 15px 15px" valign="top">
+                                    <table>
+                                      <tbody>
+                                        <tr>
+                                           <td valign="middle" align="left">
+                                              <span style="font-size:12px;color:#3e3e3e">
+                                                  Copyright © 2017,
+                                                  <span class="il">nuKart</span>
+                                                   Digital Solutions Private Limited. All Rights Reserved
+                                              </span>
+                                            </td>
+                                        </tr>
+                                       </tbody>
+                                    </table>
+                                </td>
+                              </tr>
+
+                           </tbody>
+                         </table>
+                       </td>
+                     </tr>
+                  </tbody> 
+                </table>      
+     
+            </div>
+  </body>
+</html>  

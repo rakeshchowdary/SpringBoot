@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+  <head>
+      <title th:remove="all">Welcome Email</title>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      
+  </head>
+      
+  <body>
+   <div align="center">
+     
+       <table style="background-color:#f8f8f8;">
+           <tbody>
+             <tr>
+                <td style="padding-top:30px" valign="top" align="center">
+                  <table style="border:1px #f2f2f2 solid">
+                     <tbody>
+
+                          <tr>
+                            <td style="background-clip:#ffffff;border:1px solid #f2f2f2" valign="top">
+                               <table>
+                                  <tbody>
+                                    <tr>
+                                       <td valign="middle" align="left">
+                                        <a href="https://nukart.in">
+                                         <img style="padding:25px 20px 20px 15px" th:src="${image}" onclick="" width="200" height="50"/>
+                                        </a>
+                                       </td>  
+                                    </tr>
+                                  </tbody>
+                                </table>
+                            </td>
+                          </tr> 
+
+                            <tr>
+                               <td style="vertical-align:top;padding:25px 8px 15px 8px" bgcolor="#FFFFFF">
+                                 <table style="border-collapse:collapse;float:left"> 
+                                   <tbody>
+                                     <tr>
+                                       <td style="padding:0 10px 0 10px" valign="middle">
+                                         <h1 style="color:#b18767;font-weight:400;line-height:30px;font-size:26px;text-align:left">Welcome <b th:text="${name}"></b></h1>
+                                       </td>
+                                     </tr>
+                                   </tbody>
+                                </table>
+                              </td>
+                            </tr> 
+
+                            <tr>
+                              <td style="vertical-align:top;padding:10px 8px 10px 8px" bgcolor="#FFFFFF">
+                                <table style="border-collapse:collapse;float:left">
+                                  <tbody>
+                                    <tr>
+                                      <td style="padding:0 10px 0 10px" valign="middle">
+                                        <div style="color:#3e3e3e;font-weight:400;line-height:24px;font-size:14px;text-align:left">
+                                           <p>Thank you for joining nuKart. We are excited to help you save time and money on the goods that keeps you satisfied.</p>
+                                           <p>Thanks again for signing up,<br/>
+                                           <em> <b>The nuKart Team</b> </em></p>
+                                        </div>
+                                      </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                               </td>
+                            </tr>
+
+                            <tr style="border:0px none" bgcolor="#FFFFFF">
+                               <td style="padding:15px 15px 15px 15px" valign="top">
+                                 <table style="float:left">
+                                   <tbody>
+                                     <tr>
+                                       <td valign="middle" align="left">
+                                          <a href="https://nukart.in" style="text-decoration:none;vertical-align:top;display:block" target="_blank" data-saferedirecturl="">
+                                            <span style="font-size:14px!important;line-height:54px;display:inline-block;color:#ffffff;border-radius:1px;text-align:center;padding:0 30px 0 30px;background-color:#2774d0">Shop Now</span>
+                                          </a>
+                                        </td>
+                                      </tr>
+                                   </tbody>
+                                 </table>
+                               </td>
+                            </tr>
+
+                            <tr>
+                                <td style="border-width:1px;border-style:solid;border-color:#f8f8f8;border-top-color:#f2f2f2;border-bottom-color:#f2f2f2" bgcolor="#F8F8F8">
+                                  <table style="border-collapse:collapse;float:left">
+                                    <tbody>
+                                      <tr>
+                                        <td style="padding:0 10px 0 10px" valign="middle"></td>
+                                      </tr>
+                                      <tr style="height:20px"></tr>
+                                    </tbody>
+                                  </table>
+                                </td>
+                             </tr>
+
+                             <tr style="background-color:#ffffff">
+                                <td style="padding:5px 15px 15px 15px" valign="top">
+                                   <table >
+                                      <tbody>
+                                        <tr>
+                                           <td style="font-size:14px" valign="middle" align="left">
+                                               <span style="color:#3e3e3e" th:text="${message}"></span>
+                                           </td>
+                                        </tr>
+                                      </tbody>
+                                   </table>
+                                </td>
+                              </tr>
+
+                              <tr style="border-width:1px;border-style:solid;border-color:#f8f8f8">
+                                 <td style="padding:2px 15px 15px 15px" valign="top">
+                                    <table>
+                                      <tbody>
+                                        <tr>
+                                           <td valign="middle" align="left">
+                                              <span style="font-size:12px;color:#3e3e3e">
+                                                  Copyright © 2017,
+                                                  <span class="il">nuKart</span>
+                                                   Digital Solutions Private Limited. All Rights Reserved
+                                              </span>
+                                            </td>
+                                        </tr>
+                                       </tbody>
+                                    </table>
+                                </td>
+                              </tr>
+
+                           </tbody>
+                         </table>
+                       </td>
+                     </tr>
+                  </tbody> 
+                </table>      
+     
+            </div>
+          </body>
+        </html>  

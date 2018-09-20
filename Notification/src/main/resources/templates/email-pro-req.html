@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+  <head>
+      <title th:remove="all">Welcome Email</title>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <style type="text/css">
+      	hr {
+			height: 1px;
+			background-color: black;
+			}
+      </style>
+  </head>
+      
+  <body style="border: 2px solid #38c6f6;
+               border-radius: 12px;
+               margin: 10px;">
+
+        <div style="padding: 10px 10px 10px 10px;">
+           <a href="https://nukart.in/"><img th:src="${image}" onclick="" height="30px"/></a>
+        </div>
+        <hr/>
+
+        <div style="width: 95%;
+                    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+                    display: block;
+                    margin: 15px;
+                    padding: 10px 10px 10px 10px;">
+
+          <div style="padding: 10px 10px 10px 10px;">
+            	 <table th:each="pro : ${model}" th:object="${pro}" style="margin-top:20px;">
+                 <tr><td>Retailer Name</td><td th:text="${pro.getName()}"></td></tr>
+                 <tr><td>Product Model</td><td th:text="${pro.getProductModel()}"></td></tr>
+                 <tr><td>Category</td><td th:text="${pro.getCategory()}"></td></tr>
+                 <tr><td>Brand</td><td th:text="${pro.getBrand()}"></td></tr>
+                 <tr><td>MRP</td><td th:text="${pro.getMrp()}"><span>Rs</span></td></tr>
+               </table>
+       	  </div>
+       	 </div>
+       <hr/>
+	   <p style="padding:5px;" th:text="${message}"></p>
+       <div class="footer">
+       <h5 style="text-align: center">Copyright ©  2016 Nukart Digital Solutions Private Limited. All Rights Reserved</h5>
+       </div>
+  </body>
+</html>
+
+           <!--  <a style="background-color: #38c6f6;border: none;color: white;
+           padding: 15px 32px;text-align: center;text-decoration: none;
+           display: inline-block;font-size: 16px;margin: 4px 2px;
+           cursor: pointer;" href="https://nukart.in/">Shop Now</a> -->
