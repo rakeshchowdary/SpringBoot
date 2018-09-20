@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title th:remove="all">Template for HTML email (simple)</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    </head>
+    <body>
+     Dear   <b th:text="${retailerName}"></b> !
+     <br/>
+     
+       <p>
+      Consumer <b th:text="${consumerName}"></b> has interested  in your <b th:text="${campaignName}"></b>
+      </p>
+			        <p>
+			            Regards, <br />
+			            &emsp; <em>The nuKart Team</em>
+			        </p>
+    </body>
+</html>

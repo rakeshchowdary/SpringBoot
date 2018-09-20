@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+ <head>
+     <title th:remove="all">Template for HTML email</title>
+     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+     
+     <style>
+            table {
+                width:100%;
+            }
+            table, th, td {
+                border: 1px solid black;
+                border-collapse: collapse;
+            }
+            td{
+            	text-align: center;
+            	padding: 2px;
+            }
+            th{
+            	padding: 5px;
+                text-align: center;
+            }
+            table#t01 tr:nth-child(even) {
+                background-color: #eee;
+            }
+            table#t01 tr:nth-child(odd) {
+               background-color:#fff;
+            }
+            table#t01 th {
+                background-color: black;
+                color: white;
+            }
+      </style>   
+ </head>
+     
+ <body>  
+ 	 <div th:if="${size} != 'Zero' ">
+        
+        <div th:each="key : ${consumer}" th:object="${key}">
+        
+        <div th:each="orderkey,iterStat : ${orders}" th:object="${orderkey}">          
+
+      
+        <div th:each="offerkey,offerStat : ${offers}" th:object="${offerkey}" th:if="${iterStat.index}==${offerStat.index}">
+        
+            <div th:switch="${orderkey.getState()}">
+            <!-- Placed -->
+                 <div th:case="'Placed'">
+                     <p style="font-size:18px;">Hi <span th:text="${key.getFirstName()}"></span></p>
+                    <p>Thank you for your order!</p>
+                    <p>We will notify you on further updates.</p>
+                    <p>Your order ID <a th:href="${domain + '' + orderkey.getOrderId()}"><span th:text="${orderkey.getOrderId()}"></span></a> </p>
+                    <p>You have redeemed <span th:text="${orderkey.getRedeemedPoints()}"></span> Points</p>
+                 </div>
+             <!-- Shipped -->
+                 <div th:case="'Shipped'">
+                     <p style="font-size:18px;">Hi <span th:text="${key.getFirstName()}"></span></p>
+                     Your Order with OrderId <a th:href="${domain + '' + orderkey.getOrderId()}"><span th:text="${orderkey.getOrderId()}"></span></a> has been <span th:text="${orderkey.getState()}"></span>
+                 </div>
+             <!-- Delivered -->
+                 <div th:case="'Delivered'">
+                     <p style="font-size:18px;">Hi <span th:text="${key.getFirstName()}"></span></p>
+                     Your Order with OrderId <a th:href="${domain + '' + orderkey.getOrderId()}"><span th:text="${orderkey.getOrderId()}"></span></a> has been <span th:text="${orderkey.getState()}"></span>
+                 </div>
+             <!-- Cancelled -->
+                 <div th:case="'Cancelled'">
+                     <p style="font-size:18px;">Hi <span th:text="${key.getFirstName()}"></span></p>
+                     Your Order with OrderId <a th:href="${domain + '' + orderkey.getOrderId()}"> <span th:text="${orderkey.getOrderId()}"></span></a> has been <span th:text="${orderkey.getState()}"></span>
+                 </div>
+             <!-- Pickup -->
+                 <div th:case="'Pickup'">
+                     <p style="font-size:18px;">Hi <span th:text="${key.getFirstName()}"></span></p>
+                    <p>Thank you for your order!</p>
+                    <p>We will notify you on further updates.</p>
+                    <p>Your order ID <a th:href="${domain + '' + orderkey.getOrderId()}"><span th:text="${orderkey.getOrderId()}"></span></a> </p>
+                    <p>You have redeemed <span th:text="${orderkey.getRedeemedPoints()}"></span> Points</p>
+                 </div>
+            </div>
+			
+			
+			 <table>
+                 <tr style="background-color: black;color: white;">
+                     <th colspan="2"></th>
+                     <th>Price</th>
+                     <th>Fulfilled By</th>
+                     <th>Qty</th>
+                     <th>SubTotal</th>
+                 </tr>
+               <tr>
+                   <td><img th:src="${offerkey.getProduct().getLabel()}" width="75px" height="75px"/></td>
+                   <td><b><span th:text="${offerkey.getProduct().getName()}"></span></b></td>
+                   <td><span th:text="${offerkey.getProduct().getPrice()}"></span></td>
+                   <td><span th:text="${offerkey.getRetailer().getName()}"></span></td>
+                   <td align="left"><span th:text="${orderkey.getProductQuantity()}"></span></td>
+                   <td align="left"><span th:text="${orderkey.getAmountPayable()}"></span></td>
+               </tr>
+             </table>
+              
+          </div>
+                
+     <hr/>
+     </div>
+            
+         </div>
+        
+        </div>
+        
+        <div th:if="${size} == 'Zero' ">
+            No Notification
+        </div>
+ </body>
+ 
+ </html>

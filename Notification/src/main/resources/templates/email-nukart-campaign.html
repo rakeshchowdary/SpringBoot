@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+  <head>
+      <title th:remove="all">Template for HTML email</title>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      
+      <style type="text/css">
+      	.divTag{
+		    border: 1px solid black;
+		    padding: 5px;
+		}
+
+		.headerTag{
+		}
+		
+		pre{
+		    font-size: 20px;
+		    padding: 10px;
+		    background-color: #00E5EE;
+		}
+           	hr {
+			height: 1px;
+			background-color: black;
+			margin-top: 10px;
+			}
+      </style>
+      
+  </head>
+      
+  <body>
+  <div class="divTag">
+        <div class="headerTag">
+            <a href="https://nukart.in/">
+            <img th:src="${image}" onclick="" height="30px"/>
+           </a>
+        </div>
+        <hr/>
+        <div class="bodyTag">
+            <pre th:text="${campname}"></pre>
+            <img alt="" th:src="${campimg}" />
+        </div>
+    </div>
+       <hr/>
+       <div style="padding:10px;">
+       		<span th:text="${message}"></span>
+       </div>
+
+
+  </body>
+</html>

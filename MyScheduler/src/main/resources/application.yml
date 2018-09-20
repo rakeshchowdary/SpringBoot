@@ -1,0 +1,18 @@
+server:
+  port: 8443
+  ssl:
+    enabled: true
+    key-alias: tomcat-localhost
+    key-password: rakesh
+    key-store: classpath:keystore.jks
+    key-store-provider: SUN
+    trust-store-type: JKS
+    key-store-password: rakesh
+  
+
+  
+  
+  
+  
+inputs:
+  weekly-expression: 0 m h ? * d *
